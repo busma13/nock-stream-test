@@ -1,0 +1,17 @@
+{
+  "name": "nock-stream-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "busma13 <pluitjens@terascope.io>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/jest": "29.5.12",
+    "@types/node": "^20.11.21",
+    "got": "11.8.6",
+    "jest": "29.7.0",
+    "nock": "^13.5.4"
+  },
+  "scripts": {
+    "test": "jest"
+  }
+}
