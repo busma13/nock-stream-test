@@ -1,17 +1,21 @@
-This is an example repo to show an issue in how Nock handles a ReadStream within the body of a request it is intercepting.  A change in Node 20.10.0 seems to have modified ReadStream in a way that Nock cannot handle. 
+This is an example repo to show an issue in how Nock handles a ReadStream within the body of a post request it is intercepting.  A change in Node 20.10.0 seems to have modified ReadStream in a way that Nock cannot handle. 
 
+## To reproduce:
 Clone this repo then run the following commands:
 - `cd nock-stream-test`
 - `npm install` or `yarn`
-- `nvm use 20.9.0`
-- `npm run test` or `yarn test`
-  - The test should pass
 - `nvm use 20.10.0`
 - `npm run test` or `yarn test`
-  - The test should hang until the test timeout is reached, then fail
+  - The test will hang until the test timeout is reached, then fail
 
-This test creates a ReadStream of `__tests__/test.txt`, then uses got to send the ReadStream as the body of an http request. Nock intercepts the request, but never returns a response.
+## Expected:
+- `nvm use 20.9.0`
+- `npm run test` or `yarn test`
+  - The test should pass, with nock returning `{ _id: 'some-asset-id' }` 
 
+This test creates a ReadStream of `__tests__/test.txt`, then uses got to send the ReadStream as the body of an http post request. Nock intercepts the request, but never returns a response.
+
+## Debug in VScode
 If using vscode you can use the included debugger launch scripts to test in either node 20.9.0 or 20.10.0. Nock debug logs are enabled.
 
 ```
